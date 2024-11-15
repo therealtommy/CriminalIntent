@@ -14,9 +14,9 @@ import androidx.recyclerview.widget.RecyclerView
 private const val TAG = "CrimeListFragment"
 class CrimeListFragment : Fragment() {
     private lateinit var crimeRecyclerView: RecyclerView
-    //private val crimeListViewModel: CrimeListViewModel by lazy {
-        // ViewModelProvider(this).get(CrimeListViewModel::class.java)
-  //  }
+    private val crimeListViewModel: CrimeListViewModel by lazy {
+         ViewModelProvider(this).get(CrimeListViewModel::class.java)
+    }
     override fun onCreate(savedInstanceState:
                           Bundle?) {
         super.onCreate(savedInstanceState)
