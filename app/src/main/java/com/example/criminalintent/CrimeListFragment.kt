@@ -7,6 +7,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,6 +23,12 @@ class CrimeListFragment : Fragment() {
         super.onCreate(savedInstanceState)
         Log.d(TAG, "Total crimes:${crimeListViewModel.crimes.size}")
     }
+    companion object {
+        fun newInstance(): CrimeListFragment {
+            return CrimeListFragment()
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -32,7 +39,17 @@ class CrimeListFragment : Fragment() {
                 container, false)
         crimeRecyclerView =
             view.findViewById(R.id.crime_recycler_view) as RecyclerView
-        crimeRecyclerView.layoutManager = LinearLayoutManager(context)
+        crimeRecyclerView.layoutManager =
+            LinearLayoutManager(context)
         return view
     }
+    private inner class CrimeHolder(view: View)
+        : RecyclerView.ViewHolder(view) {
+        val titleTextView: TextView =
+            itemView.findViewById(R.id.crime_title)
+        val dateTextView: TextView =
+            itemView.findViewById(R.id.crime_date)
+
+    }
+
 }

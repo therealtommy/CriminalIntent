@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
+import com.example.criminalintent.CrimeListFragment
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         val currentFragment =
             supportFragmentManager.findFragmentById(R.id.fragment_container)
         if (currentFragment == null) {
-            val fragment = CrimeFragment()
+            val fragment = CrimeListFragment.newInstance()
             supportFragmentManager.beginTransaction().add(R.id.fragment_container, fragment).commit()
         }
 
