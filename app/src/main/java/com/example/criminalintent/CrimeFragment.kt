@@ -23,6 +23,10 @@ class CrimeFragment : Fragment()  {
     private lateinit var crime: Crime
     private lateinit var dateButton: Button
     private lateinit var solvedCheckBox: CheckBox
+    public lateinit var button: Button
+
+
+
 
     private val crimeDetailViewModel : CrimeDetailViewModel by lazy {
         ViewModelProvider(this).get(CrimeDetailViewModel::class.java)
@@ -31,9 +35,8 @@ class CrimeFragment : Fragment()  {
                           Bundle?) {
         super.onCreate(savedInstanceState)
         crime = Crime()
-        val crimeId: UUID =
-            arguments?.getSerializable(ARG_CRIME_ID) as
-                    UUID
+        val crimeId: UUID = arguments?.getSerializable(ARG_CRIME_ID) as UUID
+        crimeDetailViewModel.loadCrime(crimeId)
 
     }
     override fun onCreateView(
@@ -52,6 +55,8 @@ class CrimeFragment : Fragment()  {
             isEnabled = false
             solvedCheckBox = view.findViewById(R.id.crime_solved) as CheckBox
         }
+
+
         return view
     }
 
@@ -116,7 +121,6 @@ class CrimeFragment : Fragment()  {
         super.onStop()
         crimeDetailViewModel.saveCrime(crime)
     }
-
 
 
 
